@@ -1,12 +1,22 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native'
+import {View, Text, StyleSheet} from 'react-native';
+import DashBoardList from '../components/DashBoardList';
 
-const DashBoardScreen = () =>{
+const DashBoardScreen = props =>{
+   
     return(
-        <View>
-            <Text>Dashboard Screen</Text>
+        <View style={styles.content}>
+            <DashBoardList title='Food Planner' row='food'/>
+            <DashBoardList title='Private Economy' row='economy'/>
+            <DashBoardList title='Gamification' row='game'/>
         </View>
     )
 }
+
+const styles= StyleSheet.create({
+    content:{
+        flex:1
+    }
+})
 
 export default DashBoardScreen;
