@@ -5,11 +5,14 @@ import {createAppContainer} from 'react-navigation';
 import DashBoardScreen from './src/screens/DashBoardScreen'
 import GroceryListScreen from './src/screens/GroceryListScreen'
 import FoodBudgetScreen from './src/screens/FoodBudgetScreen';
+import ProductModal from './src/components/AddProduct';
+import {Provider} from './src/context/GroceryContext'
 
 const navigator = createStackNavigator({
   Index: DashBoardScreen,
   GroceryList: GroceryListScreen,
-  FoodBudget: FoodBudgetScreen
+  FoodBudget: FoodBudgetScreen,
+  Create : ProductModal
 
 },{
   initialRouteName: 'Index',
@@ -18,6 +21,12 @@ const navigator = createStackNavigator({
   }
 })
 
-export default createAppContainer(navigator)
 
 
+const App = createAppContainer(navigator);
+
+export default () => {
+  return <Provider>
+      <App/>
+    </Provider>
+};

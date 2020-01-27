@@ -8,7 +8,7 @@ const DashBoardScreen = props =>{
         <View style={styles.content}>
             <DashBoardList title='Food Planner' row='food'/>
             <DashBoardList title='Private Economy' row='economy'/>
-            <DashBoardList title='Gamification' row='game'/>
+            
         </View>
     )
 }
