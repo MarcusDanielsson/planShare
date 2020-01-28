@@ -77,9 +77,7 @@ const GroceryListScreen = ({navigation}) =>{
 
 
 GroceryListScreen.navigationOptions = ({navigation}) =>{
-    
-   
-   
+
     return{  
         headerRight: (
         <TouchableOpacity
@@ -101,6 +99,11 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent:'space-between',
         flex:1
+    },
+    header:{
+        alignSelf:'center',
+        marginTop: 10,
+        fontWeight:'bold'
     },
         
     

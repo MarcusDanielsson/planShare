@@ -5,19 +5,39 @@ import {createAppContainer} from 'react-navigation';
 import DashBoardScreen from './src/screens/DashBoardScreen'
 import GroceryListScreen from './src/screens/GroceryListScreen'
 import FoodBudgetScreen from './src/screens/FoodBudgetScreen';
-import ProductModal from './src/components/AddProduct';
+import AddProduct from './src/components/AddProduct';
 import {Provider} from './src/context/GroceryContext'
+import FixedCostScreen from './src/screens/FixedCostScreen';
+import AddCost from './src/components/AddCost';
 
 const navigator = createStackNavigator({
   Index: DashBoardScreen,
-  GroceryList: GroceryListScreen,
-  FoodBudget: FoodBudgetScreen,
-  Create : ProductModal
+  GroceryList: {
+    screen: GroceryListScreen,
+    navigationOptions:{
+      title:'Grocery list'}
+    },
+  FoodBudget: {
+    screen: FoodBudgetScreen,
+    navigationOptions:{
+      title:'Food budget'}
+    },
+  Create : AddProduct,
+  FixedCost : {
+    screen: FixedCostScreen,
+    navigationOptions:{
+      title:'Fixed cost'}
+    },
+  AddCost : AddCost,
+  
 
 },{
   initialRouteName: 'Index',
   defaultNavigationOptions:{
-    title: 'PlanShare'
+    title: 'PlanShare',
+    headerStyle:{
+      backgroundColor: 'white'
+    }
   }
 })
 

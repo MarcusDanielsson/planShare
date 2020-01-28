@@ -24,7 +24,7 @@ const DashBoardList =({title, row, navigation})=> {
         {'src':food1, 'id':'1', 'title': 'Grocery List', 'row': 'food', 'page':'GroceryList'},
         {'src':food2, 'id':'2', 'title': 'Food Budget', 'row': 'food','page':'FoodBudget'},
         {'src':food3, 'id':'3', 'title': 'Statistics', 'row': 'food', 'page':'foodStats'},
-        {'src':economy1, 'id':'4', 'title': 'Fixed cost', 'row': 'economy', 'page':'Costs'},
+        {'src':economy1, 'id':'4', 'title': 'Fixed cost', 'row': 'economy', 'page':'FixedCost'},
         {'src':economy2, 'id':'5', 'title': 'Saving Plans', 'row': 'economy', 'page':'Savings'},
         {'src':economy3, 'id':'6', 'title': 'Statistics', 'row': 'economy', 'page':'economyStats'},
         
