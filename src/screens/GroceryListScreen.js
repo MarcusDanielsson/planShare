@@ -1,6 +1,6 @@
 import React, {useContext, useState} from 'react';
 import {View, Text, StyleSheet, TouchableOpacity, TextInput, Button, FlatList} from 'react-native';
-import {Feather} from '@expo/vector-icons'
+import {Feather, MaterialIcons} from '@expo/vector-icons'
 import {Context} from '../context/GroceryContext'
 
 
@@ -12,36 +12,64 @@ const GroceryListScreen = ({navigation}) =>{
    
     return( 
         <View flex={1}> 
-        <View style={styles.title}><Text >Product</Text>
-            <Text>Quantity</Text>
-            <Text >Est. Price</Text>
-            
-        </View>
-        <View style={styles.content}>
-        <FlatList 
-            data={state}
-            keyExtractor = {(blogPost)=> blogPost.title}
-            renderItem ={({item}) => {
-                return (
-        <TouchableOpacity
-                    onPress={()=> console.log('press')}
-                    >
-                <View style={styles.row}> 
-                <Text style={styles.listObj}>{item.title}</Text>
-                <Text>{item.quantity} pc</Text>
-                <Text>{item.price} kr</Text>
-                
+            <View style={styles.title}>
+                <Text>Product</Text>
+                <Text>Qty.</Text>
+                <Text >Est. Price</Text>
+            </View>
+            <View style={styles.content}>
+                <FlatList 
+                    data={state}
+                    keyExtractor = {(blogPost)=> blogPost.title}
+                    renderItem ={({item}) => {
+                        return (
+                <TouchableOpacity
+                            onPress={()=> console.log('press')}
+                            >
+                        <View style={styles.row}> 
+                        <Text style={styles.listObj}>{item.title}</Text>
+                        <Text style={styles.listObj}>{item.quantity} pc</Text>
+                        <Text style={styles.listObj}>{item.price} kr</Text>
+                        <TouchableOpacity
+                        onPress={()=> deleteGrocery(item.id)}>
+                        <Feather style={styles.icons} name='trash'/>
+                        </TouchableOpacity>
+                        </View>
+                        </TouchableOpacity>
+                        )
+                    }} />   
+            </View>
+            <View style={styles.bottom}>
+                <Text>Estimated price:</Text>
+            </View>
+            <View style={styles.cost}>
+                <View>
+                <TextInput 
+                textAlign={'center'}
+                placeholder='Add Actual Cost'
+                title='Cost'
+                style={styles.textInput}
+                />
                 </View>
-                </TouchableOpacity>
-                )
-            }} />
+                
             
-            
-        </View>
-        <View style={styles.bottom}><Text>Estimated price:</Text></View>
-        
-        
-        
+            <TouchableOpacity
+                onPress={()=> console.log('clear list')}>
+                 <View style={styles.button}>
+                    <View>
+                        <MaterialIcons 
+                        marginLeft={20}
+                        name="remove-shopping-cart"
+                        size={40}/>
+                        </View>
+                    <View>
+                        <Text>Clear shopping list</Text>
+                    </View>
+               
+                 </View>
+             </TouchableOpacity>
+
+             </View>
         </View>
         
     )}
@@ -64,12 +92,11 @@ GroceryListScreen.navigationOptions = ({navigation}) =>{
 
 const styles = StyleSheet.create({
     title:{
-        fontSize:16,
+        fontSize:18,
         fontWeight: 'bold',
         marginTop: 20,
         marginLeft: 15,
-        marginRight: 15,
-        borderBottomWidth: 1,
+        marginRight: 90,
         borderBottomColor: 'black',
         flexDirection: 'row',
         justifyContent:'space-between',
@@ -80,13 +107,23 @@ const styles = StyleSheet.create({
     row:{
         flexDirection: 'row',
         justifyContent: 'space-between',
-        borderTopWidth: 1,
+        borderTopWidth: 2,
         paddingVertical: 20,
         borderColor: 'gray',
         marginLeft: 15,
         marginRight: 15,
         
     },
+    cost:{
+        textAlign: 'center',
+        marginBottom: 20,
+        marginTop: 20,
+        flexDirection:'row',
+        justifyContent: 'space-around'
+        
+
+    },
+    
     icons:{
         fontSize: 20
 },
@@ -94,13 +131,23 @@ const styles = StyleSheet.create({
         flex:20
     },
     bottom:{
+        
         alignSelf: 'flex-end',
-        marginRight: 50
+        marginRight: 130,
+        marginBottom: 10
     },
+    button:{
+        
+        justifyContent:"center", 
+        alignItems:"center",
+        marginBottom: 20,
+        
+    },
+    
     textInput:{
-        width: 300,
+        width: 150,
         height:30,
-        borderWidth: 1,
+        borderBottomWidth: 1,
         borderColor: 'black',
         borderRadius: 3,
         marginBottom: 20,

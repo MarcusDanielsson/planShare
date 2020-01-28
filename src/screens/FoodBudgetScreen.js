@@ -1,6 +1,7 @@
 import React from 'react';
-import {ProgressBarAndroid, View, Text, StyleSheet} from 'react-native';
+import {ProgressBarAndroid, View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 var currentWeekNumber = require('current-week-number');
+import {Ionicons} from '@expo/vector-icons'
 
 
 const FoodBudgetScreen = () =>{
@@ -23,6 +24,27 @@ const FoodBudgetScreen = () =>{
       </View>
     )
 }
+
+FoodBudgetScreen.navigationOptions = ({navigation}) =>{
+    
+   
+   
+    return{  
+        headerRight: (
+        <TouchableOpacity
+        style={styles.headerRight}
+        onPress={()=> console.log("change settings")}>
+        <Ionicons 
+        size={30}
+         name='ios-settings'/>
+        </TouchableOpacity>
+        )
+    }
+}
+
+
+
+
 const styles = StyleSheet.create({
     container: {
       flex: 1,
@@ -50,7 +72,8 @@ const styles = StyleSheet.create({
         marginBottom: 10,
         fontStyle: 'italic'
 
-    }
+    },
+    headerRight:{}
   });
 
 export default FoodBudgetScreen;
